@@ -1,3 +1,4 @@
+<?php include 'session.php';?>
 <!DOCTYPE html>
 <html>
 <title>Home :: Freindzone</title>
@@ -18,7 +19,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Freindzone</a>
   
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><img src="img/default-user-image.png" class="w3-circle" style="height:25px;width:25px" alt="Avatar"></a>
+  <a href="logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="Logout"><img src="img/default-image.png" class="w3-circle" style="height:25px;width:25px" alt="Avatar"></a>
  </div>
 </div>
 
@@ -39,12 +40,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       <!-- Profile -->
       <div class="w3-card-2 w3-round w3-white">
         <div class="w3-container">
-         <h4 class="w3-center">My Profile</h4>
-         <p class="w3-center"><img src="img/default-user-image.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <h4 class="w3-center"><?php echo $firstname." ".$lastname?></h4>
+         <p class="w3-center"><img src="img/default-image.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
          <hr>
-         <p><i class="fa fa-mobile fa-fw w3-margin-right w3-text-theme"></i><?php echo "mobile"?></p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i><?php echo "city"?></p>
-         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i><?php echo "birthday" ?></p>
+         <p><i class="fa fa-mobile fa-fw w3-margin-right w3-text-theme"></i><?php echo $mobile?></p>
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i><?php echo $city?></p>
+         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i><?php echo $dob ?></p>
         </div>
       </div>
       <br>
@@ -129,21 +130,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
           <div class="w3-card-2 w3-round w3-white">
             <div class="w3-container w3-padding">
               <h6 class="w3-opacity">Post New Feed</h6>
-              <textarea style="width: 700px;margin-bottom: 12px;" contenteditable="true" class="w3-border w3-padding" placeholder="Status : Feeling Well"></textarea>
-              <button type="button" style="float: right;" class="w3-button w3-theme"><i class="fa fa-pencil"></i>Post</button> 
+              <form action="post.php" method="post">
+                <textarea style="width: 700px;margin-bottom: 12px;" contenteditable="true" class="w3-border w3-padding" placeholder="Status : Feeling Well" name="feed"></textarea>
+                <button type="submit" style="float: right;" class="w3-button w3-theme"><i class="fa fa-pencil"></i>Post</button> 
+              </form>  
             </div>
           </div>
         </div>
       </div>
       
-      <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-        <img src="img/default-user-image.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">time</span>
-        <h4>Name</h4><br>
-        <hr class="w3-clear">
-        <p>new feed</p>  
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-      </div>      
+      <?php include 'viewpost.php';?> 
+            
     <!-- End Middle Column -->
     </div>
     
